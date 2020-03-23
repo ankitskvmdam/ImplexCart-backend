@@ -5,7 +5,7 @@ const router=express.Router();
 
 
 
-router.use('/api',require('./api'));
+//router.use('/api',require('./api'));
 
 
 
