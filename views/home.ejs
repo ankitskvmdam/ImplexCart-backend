@@ -1,4 +1,12 @@
 <div>
 
    <h1> Welcome to <%=title%></h1>
+   <form action="/api/v1/product-create" method="POST" enctype="multipart/form-data">
+      <input type="text" name='tag' placeholder="category">
+      <input type='text' name='title'  placeholder="name">
+      <input type="number" name='price' placeholder="price">
+      <input type="text"  name="description" placeholder="description">
+      <input type="file" name='image'   >
+      <input type="submit" value="submit">
+   </form>
 </div>

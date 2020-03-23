@@ -2,18 +2,21 @@ const express=require('express');
 
 const port=8000;
 const app=express();
-
-
+const cokkiesparser=require('cookie-parser');
+const db=require('./config/mongoose');
+//const MongoStore=require('connect-mongo')(session);
 
 //const cokkiesparser=require('cookie-parser');
 
 
-
+app.use(express.urlencoded());
+app.use(cokkiesparser());
 
 app.use(express.static('./assets'));
-
-
 app.use('/uploads',express.static(__dirname +'/uploads'));
+
+
+
 
 
 app.set('view engine','ejs');
