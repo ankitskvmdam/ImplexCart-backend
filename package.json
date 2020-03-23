@@ -1,0 +1,11 @@
+{
+  "name": "implexcart-backend",
+  "version": "1.0.0",
+  "description": "Ecommerce Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anshu Rai",
+  "license": "MIT"
+}
