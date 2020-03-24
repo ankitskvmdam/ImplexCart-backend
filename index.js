@@ -1,13 +1,13 @@
 const express=require('express');
 
-const port=8000;
+const port=9000;
 const app=express();
 const cokkiesparser=require('cookie-parser');
 const db=require('./config/mongoose');
 const passport=require('passport');
 const session=require('express-session');
 const MongoStore=require('connect-mongo')(session);
-
+///const session=require('express-session');
 //const cokkiesparser=require('cookie-parser');
 const passportlocal=require('./config/passport');
 
