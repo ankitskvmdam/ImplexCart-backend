@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const multer=require('multer');
 const path=require('path');
 const AVATAR_PATH=path.join('/uploads/users/avtars');
+const AADHARPATH=path.join('uploads/user/aadhar');
+const PANPATH=path.join('uploads/user/pancard');
+
 
 const userSchema = new mongoose.Schema({
     email: {

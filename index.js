@@ -5,10 +5,11 @@ const app=express();
 const cokkiesparser=require('cookie-parser');
 const db=require('./config/mongoose');
 const passport=require('passport');
-//const MongoStore=require('connect-mongo')(session);
 const session=require('express-session');
+const MongoStore=require('connect-mongo')(session);
+
 //const cokkiesparser=require('cookie-parser');
-const passportlocal=require('./config/passport-local');
+const passportlocal=require('./config/passport');
 
 app.use(express.urlencoded());
 app.use(cokkiesparser());

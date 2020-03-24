@@ -8,6 +8,14 @@
       <input type="file" name='image'   >
       <input type="submit" value="submit">
    </form>
+<ul>
+   <% for (p of products) {%>
+        <li>
 
-
+         <p> <%=p.tag%> <span><%p.description%></span></p>
+         <p><%p.price%></p>
+         <img src="<%=p.avatar%>" >
+        </li>
+      <%}%>
+</ul>
 </div>
