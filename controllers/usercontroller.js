@@ -54,7 +54,8 @@ module.exports.create=async function (req,res)
                organisationName:req.body.organisationName,
                organisationNature:req.body.organisationNature,
                gstNo:req.body.gstNo,
-               organisationScope:req.body.organisationScope
+               organisationScope:req.body.organisationScope,
+               countProduct:1
 
            },function(err,user)
            {  

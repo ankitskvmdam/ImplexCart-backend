@@ -96,7 +96,10 @@ const userSchema = new mongoose.Schema({
     {
         type:String
     },
-    countProduct:1
+    countProduct:
+    {
+        type:Number
+    }
 }, {
     timestamps: true
 });
