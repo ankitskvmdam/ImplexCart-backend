@@ -4,16 +4,18 @@ const port=8000;
 const app=express();
 const cokkiesparser=require('cookie-parser');
 const db=require('./config/mongoose');
+const passport=require('passport');
 //const MongoStore=require('connect-mongo')(session);
-
+const session=require('express-session');
 //const cokkiesparser=require('cookie-parser');
-
+const passportlocal=require('./config/passport-local');
 
 app.use(express.urlencoded());
 app.use(cokkiesparser());
 
 app.use(express.static('./assets'));
 app.use('/uploads',express.static(__dirname +'/uploads'));
+app.use('/uploads/products/image',express.static(__dirname+'/uploads/products/image'));
 
 
 
@@ -22,7 +24,29 @@ app.use('/uploads',express.static(__dirname +'/uploads'));
 app.set('view engine','ejs');
 app.set('views','./views');
 
+app.use(session({
+     name: 'Implex',
+     // TODO change the secret before deployment in production mode
+     secret: 'newsecret',     saveUninitialized: false,
+     resave: false,
+     cookie: {
+         maxAge: (1000 * 60 * 100)
+     },
+     store: new MongoStore(
+         {
+             mongooseConnection: db,
+             autoRemove: 'disabled'
+         
+         },
+         function(err){
+             console.log(err ||  'connect-mongodb setup ok');
+         }
+     )
+ }));
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.use(passport.setAuthentication);
 
 app.use('/',require('./routes'));
 

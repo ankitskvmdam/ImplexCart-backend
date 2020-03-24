@@ -8,6 +8,7 @@ const homeController=require('../controllers/homecontroller');
 
 
 router.get('/',homeController.home);
+router.use('/user',require('./user'));
 router.use('/api',require('./api'));
 
 
