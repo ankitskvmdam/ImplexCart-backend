@@ -10,7 +10,7 @@ module.exports.createProduct=async function(req,res)
 
 
         let user=User.findById(req.user.id);
-
+          console.log('in create product');
         if(user.countProduct==0)
         {
             return res.json(500, {

@@ -1,12 +1,14 @@
 const express=require('express');
+const passport=require('passport');
 
 // using express route
-const product=require('../../../models/product');
+const products=require('../../../controllers/api/v1/products');
 const router=express.Router();
 
-router.post('/product-create',product.createProduct);
-router.get('/getProduct',product.showProduct);
-router.get('/getUserProduct',product.userProduct);
+
+router.get('/getProduct',products.showProduct);
+router.post('/product-create',products.createProduct);
+router.get('/userProduct',products.userProduct);
 
 //router.use('/api',require('./api'));
 
