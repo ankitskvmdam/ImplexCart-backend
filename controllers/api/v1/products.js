@@ -18,6 +18,7 @@ module.exports.createProduct=async function(req,res)
             let price=req.body.price;
             let title=req.body.title;
             let description=req.body.description;
+            let user=req.user._id;
             let filepath;
 
             if(req.file)
@@ -29,7 +30,7 @@ module.exports.createProduct=async function(req,res)
             console.log('description',description);
             
         Product.create(
-            {  
+            {  user:user,
                 tag:tag,
                 price:price,
                 title:title,
@@ -78,6 +79,24 @@ module.exports.showProduct=async function(req,res)
         });
     }
     catch(err)
+    {
+        return res.json(500, {
+            message: "Error in Fetching ProdutsProduct",
+            data:err
+        });
+    }
+}
+
+module.exports.userProduct=async function(req,res)
+{  try
+    {
+        let products=await Product.find({user:req.user._id});
+        return res.json(200, {
+            message: "Request Sucess",
+            data:products
+        });
+
+    }catch(err)
     {
         return res.json(500, {
             message: "Error in Fetching ProdutsProduct",

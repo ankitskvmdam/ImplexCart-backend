@@ -4,6 +4,11 @@ const path=require('path');
 const IMAGE_PATH=path.join('/uploads/products/image');
 
 const ProductSchema = new mongoose.Schema({
+    user:
+    {
+        type:mongoose.Schema.Types.ObjectId,
+        required:true
+    },
     tag: {
         type: String,
         required: true,

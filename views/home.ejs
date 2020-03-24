@@ -9,6 +9,40 @@
       <input type="submit" value="submit">
    </form>
 <ul>
+
+   <h1>Registration</h1>
+   <br>
+   <br>
+
+   <form  action="/user/create" method="POST" enctype="multipart/form-data">
+      <input type="email" name="email"placeholder="email"  required> <br>
+      <input type="number" name="number" placeholder="Mobile No" required><br>
+      <input type="text" name="name" placeholder="name"  required><br>
+      <input type="text"  name="parentName" placeholder="S/O D/O"  required><br>
+      <input type="text" name="permanentAddress" placeholder="permanentAddress"  required><br>
+      <input type="text" name="currentAddress"  placeholder="currentAddress"  required><br>
+      <input type="number"  name='alternateNumber'  placeholder="alternateNuber" ><br>
+      <input type="text"  name="panno"   placeholder="panno" required><br>
+      <input type="number"  name="aadharno" placeholder="aadharno"  required><br>
+      <input type="text"  name="destination"  placeholder="destination"  ><br>
+      <input type="file"  name='image'> <br>
+      <input type="file"  name="image"  required><br>
+      <input type="file"  name="image"  required><br>
+      <input  type="text"  name='organisationName'  placeholder="organisationName"  ><br>
+      <input  type="text"  name='organisationNature'  placeholder="organisationNature"  ><br>
+
+      <input type="text"  name="gstNo"placeholder="gstNo"  ><br>
+      <input  type="text"  name='organisationScope'  placeholder="organisationScope"  > <br>
+      <input type="submit"value="submit">
+
+
+   </form>
+
+   <form action="/user/create-session"  method="POST">
+      <input type="email" name="email">
+      <input type="text"name="password">
+      <input type="submit"  value='submit'>
+   </form>
    <% for (p of products) {%>
         <li>
 

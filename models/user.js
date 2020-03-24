@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const multer=require('multer');
 const path=require('path');
-const AVATAR_PATH=path.join('/uploads/users/avtars');
-const AADHARPATH=path.join('uploads/user/aadhar');
-const PANPATH=path.join('uploads/user/pancard');
+const AVATAR_PATH=path.join('/uploads/users/avatar');
+
 
 
 const userSchema = new mongoose.Schema({
@@ -12,11 +11,88 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    password:
+    {
+        type:String,
+        required:true
+    },
+    number:
+    {
+        type:Number,
+        required:true,
+        unique:true
+    },
+
    
     name: {
         type: String,
         required: true
-    },avatar:
+    },
+
+    parentName:
+    {
+        type:String,
+        required:true
+    },
+    permanentAddress:
+    {
+        type:String,
+        required:true
+    },
+    currentAddress:
+    {
+        type:String,
+        required:true
+    },
+    alternateNumber:
+    {
+        type:Number,
+        unique:true
+            
+        
+    },
+    panno:
+    {
+        type:String,
+        required:true
+    },
+    aadharno:
+    {
+       type:Number,
+       required:true
+    },
+    destination:
+    {
+        type:String
+    },
+
+      avatar:
+    {
+        type:String
+    },
+    aadharimage:
+    {
+        type:String,
+        required:true
+    },
+    panimage:
+    {
+        type:String,
+        required:true
+    },
+    organisationName:
+    {
+        type:String
+    },
+    organisationNature:
+    {
+        type:String
+    },
+    gstNo:
+    {
+        type:String
+    },
+    organisationScope:
     {
         type:String
     }
@@ -40,8 +116,10 @@ let storage=multer.diskStorage(
 );
 
 // static to make them available for others
-userSchema.statics.uploadedAvatar=multer({storage:storage}).single('avatar');
+userSchema.statics.uploadedAvatar=multer({storage:storage}).array('image',3);
 userSchema.statics.avatarpath=AVATAR_PATH;
+
+
 
 
 const User = mongoose.model('ImplexUser', userSchema);
