@@ -95,7 +95,8 @@ const userSchema = new mongoose.Schema({
     organisationScope:
     {
         type:String
-    }
+    },
+    countProduct:1
 }, {
     timestamps: true
 });

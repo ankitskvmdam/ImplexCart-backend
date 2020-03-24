@@ -1,4 +1,5 @@
 const Product=require('../../../models/product');
+const User=require('../../../models/user');
 const fs=require('fs');
 const path=require('path');
 
@@ -6,6 +7,23 @@ module.exports.createProduct=async function(req,res)
 {
 
     try{
+
+
+        let user=User.findById(req.user.id);
+
+        if(user.countProduct==0)
+        {
+            return res.json(500, {
+                message: "Limit ecceeded",
+                data:"limit excceeded"
+                });
+        }
+        else{
+
+           let details={countProduct:ser.countProduct-1};
+           user.countProductcount=details;
+           user.save();
+        
          let upload=await Product.uploadedAvatar(req,res,function(err)
          {   console.log('inside uplodad product file');
              if(err) 
@@ -56,6 +74,7 @@ module.exports.createProduct=async function(req,res)
         );
 
     });
+}
       
     }
     catch(err)
