@@ -10,7 +10,9 @@ const MongoStore=require('connect-mongo')(session);
 ///const session=require('express-session');
 //const cokkiesparser=require('cookie-parser');
 const passportlocal=require('./config/passport');
+const cors = require('cors')
 
+app.use(cors());
 app.use(express.urlencoded());
 app.use(cokkiesparser());
 
