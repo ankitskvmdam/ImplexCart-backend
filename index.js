@@ -17,6 +17,7 @@ app.use(express.urlencoded());
 app.use(cokkiesparser());
 
 app.use(express.static('./assets'));
+app.use(express.static('./dist'));
 app.use('/uploads',express.static(__dirname +'/uploads'));
 app.use('/uploads/products/image',express.static(__dirname+'/uploads/products/image'));
 
