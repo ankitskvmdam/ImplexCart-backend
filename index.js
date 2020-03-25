@@ -9,7 +9,10 @@ const session=require('express-session');
 const MongoStore=require('connect-mongo')(session);
 ///const session=require('express-session');
 //const cokkiesparser=require('cookie-parser');
+
 const passportlocal=require('./config/passport');
+var fallback = require('express-history-api-fallback')
+
 const cors = require('cors')
 
 app.use(cors());
@@ -21,6 +24,7 @@ app.use(express.static('./dist'));
 app.use('/uploads',express.static(__dirname +'/uploads'));
 app.use('/uploads/products/image',express.static(__dirname+'/uploads/products/image'));
 
+app.use(fallback(__dirname + '/dist/index.html'))
 
 
 
