@@ -12,7 +12,7 @@ const MongoStore=require('connect-mongo')(session);
 const passportlocal=require('./config/passport');
 const cors = require('cors')
 
-const whiltelist = ['http://localhost:8080', 'http://saleimplexcart.online', 'https://saleimplexcart.online', 'http://localhost']
+const whitelist = ['http://localhost:8080', 'http://saleimplexcart.online', 'https://saleimplexcart.online', 'http://localhost', 'http:18.212.163.39', 'http:18.212.163.39:9000']
 
 const corsOptions = {
 	origin: function(origin, callback){
