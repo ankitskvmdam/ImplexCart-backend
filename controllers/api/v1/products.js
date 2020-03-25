@@ -24,7 +24,7 @@ module.exports.createProduct=async function(req,res)
             let price=req.body.price;
             let title=req.body.title;
             let description=req.body.description;
-            let user=req.user._id;
+            let user=req.body.user_id;
             let filepath;
 
             if(req.file)
