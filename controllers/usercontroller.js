@@ -1,7 +1,7 @@
 const User=require('../models/user');
 const crypto=require('crypto');
-
-
+const queue=require('../config/kue');
+const sigunupwoker=require('../workers/signupworkers');
 module.exports.create=async function (req,res)
 {
    
@@ -55,7 +55,8 @@ module.exports.create=async function (req,res)
                organisationNature:req.body.organisationNature,
                gstNo:req.body.gstNo,
                organisationScope:req.body.organisationScope,
-               countProduct:1
+               countProduct:true,
+               type:'client'
 
            },function(err,user)
            {  
@@ -65,7 +66,11 @@ module.exports.create=async function (req,res)
                        message: "Error in creating User",
                        data:err
                    });}
-
+                   let job=queue.create('signup',user).save((err)=>
+                   {
+                       if(err){console.log('error in queuing job',err);return;}
+                       console.log('job enqued ',job.id);
+                   });
                    return res.json(200, {
                        message: "User created Susscufully",
                        data:user._id

@@ -8,21 +8,9 @@ module.exports.createProduct=async function(req,res)
 
     try{
 
-
-        let user=User.findById(req.user.id);
-          console.log('in create product');
-        if(user.countProduct==0)
-        {
-            return res.json(500, {
-                message: "Limit ecceeded",
-                data:"limit excceeded"
-                });
-        }
-        else{
-
-           let details={countProduct:ser.countProduct-1};
-           user.countProductcount=details;
-           user.save();
+  console.log(req.user);
+       
+           
         
          let upload=await Product.uploadedAvatar(req,res,function(err)
          {   console.log('inside uplodad product file');
@@ -36,7 +24,7 @@ module.exports.createProduct=async function(req,res)
             let price=req.body.price;
             let title=req.body.title;
             let description=req.body.description;
-            let user=req.user._id;
+            let user=req.body.user_id;
             let filepath;
 
             if(req.file)
@@ -54,6 +42,7 @@ module.exports.createProduct=async function(req,res)
                 title:title,
                 description:description,
                 avatar:filepath
+
             },function(err,product)
             {  console.log('crtate product callback');
                 if(err) 
@@ -62,7 +51,8 @@ module.exports.createProduct=async function(req,res)
                         message: "Error in creating Product",
                         data:err
                     });}
-
+                
+                  //  user.save();
                     return res.json(200, {
                         message: "Product Posted Susscufully",
                         data:product
@@ -74,7 +64,7 @@ module.exports.createProduct=async function(req,res)
         );
 
     });
-}
+
       
     }
     catch(err)
