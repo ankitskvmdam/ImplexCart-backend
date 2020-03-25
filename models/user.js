@@ -98,7 +98,8 @@ const userSchema = new mongoose.Schema({
     },
     countProduct:
     {
-        type:Number
+        type:Number,
+        required:true
     }
 }, {
     timestamps: true
