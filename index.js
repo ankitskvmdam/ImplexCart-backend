@@ -11,7 +11,7 @@ const MongoStore=require('connect-mongo')(session);
 //const cokkiesparser=require('cookie-parser');
 
 const passportlocal=require('./config/passport');
-var fallback = require('express-history-api-fallback')
+// var fallback = require('express-history-api-fallback')
 
 const cors = require('cors')
 
@@ -57,7 +57,11 @@ app.use(passport.setAuthentication);
 
 app.use('/',require('./routes'));
 
-app.use(fallback(path.join(__dirname, '/dist/index.html')))
+// app.use(fallback(path.join(__dirname, '/dist/index.html')))
+
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, './dist/index.html'))
+})
 
 
 // firing server
