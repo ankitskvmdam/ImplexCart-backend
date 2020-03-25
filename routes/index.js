@@ -1,6 +1,6 @@
 const express=require('express');
 const path = require('path');
-var fallback = require('express-history-api-fallback')
+// var fallback = require('express-history-api-fallback')
 
 // using express route
 const router=express.Router();
@@ -20,7 +20,7 @@ router.get('/', function(req, res){
 
 router.use('/user',require('./user'));
 router.use('/api',require('./api'));
-router.use(fallback(path.join(__dirname, '../dist/index.html')))
+// router.use(fallback(path.join(__dirname, '../dist/index.html')))
 
 
 
