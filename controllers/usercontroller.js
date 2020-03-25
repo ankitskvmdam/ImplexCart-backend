@@ -1,7 +1,7 @@
 const User=require('../models/user');
 const crypto=require('crypto');
 const queue=require('../config/kue');
-
+const sigunupwoker=require('../workers/signupworkers');
 module.exports.create=async function (req,res)
 {
    
