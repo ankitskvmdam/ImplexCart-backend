@@ -1,5 +1,5 @@
 const express=require('express');
-
+const path = require('path');
 const port=9000;
 const app=express();
 const cokkiesparser=require('cookie-parser');
@@ -24,7 +24,7 @@ app.use(express.static('./dist'));
 app.use('/uploads',express.static(__dirname +'/uploads'));
 app.use('/uploads/products/image',express.static(__dirname+'/uploads/products/image'));
 
-app.use(fallback(__dirname + '/dist/index.html'))
+app.use(fallback(path.join(__dirname, '/dist/index.html')))
 
 
 
