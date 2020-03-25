@@ -11,10 +11,12 @@ const router=express.Router();
 // router.get('/',homeController.home);
 
 // https://codeforgeek.com/render-html-file-expressjs/
+
 router.get('/', function(req, res){
     const distPath = (path.join(__dirname, '../dist/index.html'))
     res.sendFile(distPath)
 })
+
 router.use('/user',require('./user'));
 router.use('/api',require('./api'));
 
