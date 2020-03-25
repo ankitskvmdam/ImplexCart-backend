@@ -12,7 +12,11 @@ const MongoStore=require('connect-mongo')(session);
 const passportlocal=require('./config/passport');
 const cors = require('cors')
 
-app.use(cors());
+const corsOptions = {
+	origin: '*',
+	credentials: true
+};
+app.use(cors(corsOptions));
 app.use(express.urlencoded());
 app.use(cokkiesparser());
 
